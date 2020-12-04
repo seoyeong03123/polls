@@ -78,3 +78,6 @@ def create(requset, requset_id):
          'question': question,
          'error_message': "You didn't select a choice."
      })
+
+def main(request):
+    return render(request, 'polls/index.html')

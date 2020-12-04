@@ -1,4 +1,4 @@
-#!D:\PycharmProjects\polls\venv\Scripts\python.exe
+#!C:\Users\yeong\Desktop\polls\venv\Scripts\python.exe
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 
