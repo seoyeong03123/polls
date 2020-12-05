@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>{{ mindtest.mindtest_text }}</h1>
+
+    <form action="{% url 'mindtest:vote' mindtest.id%}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Vote">
+    </form>
+<!--    {% for question in question_id %} -->
+<!--    {% endfor %}-->
+</body>
+</html>

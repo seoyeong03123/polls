@@ -69,15 +69,3 @@ def vote(request, question_id):
 # def vote(request, question_id):
 #     return HttpResponse("You're voting on question %s." % question_id)
 
-def create(requset, requset_id):
- question = get_object_or_404(Question, pk=question_id)
- try:
-     selected_choice = question.choice_set.get(pk=request.POST['choice'])
- except (KeyError, Choice.DoesNotExist):
-     return render(request, 'polls/detail.html', {
-         'question': question,
-         'error_message': "You didn't select a choice."
-     })
-
-def main(request):
-    return render(request, 'polls/index.html')
