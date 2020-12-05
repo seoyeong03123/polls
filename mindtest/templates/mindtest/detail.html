@@ -9,9 +9,11 @@
 
     <form action="{% url 'mindtest:vote' mindtest.id%}" method="post">
         {% csrf_token %}
+        {% for question in question_id %}
+
+        {% endfor %}
+
         <input type="submit" value="Vote">
     </form>
-<!--    {% for question in question_id %} -->
-<!--    {% endfor %}-->
 </body>
 </html>
