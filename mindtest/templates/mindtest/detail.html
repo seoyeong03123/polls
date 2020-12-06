@@ -7,10 +7,15 @@
 <body>
     <h1>{{ mindtest.mindtest_text }}</h1>
 
+
     <form action="{% url 'mindtest:vote' mindtest.id%}" method="post">
         {% csrf_token %}
-        {% for question in question_id %}
-            <p>{{ question.question_text }}</p>
+        {% for question in mindtest.question_set.all %}
+        <p>{{ question.question_text }}</p>
+            {% for choice in question.choice_set.all %}
+                <input type="radio" id="choice{{ forloop.counter }}" name="choice" value="{{ choice.id }}">
+            <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+            {% endfor %}
         {% endfor %}
 
         <input type="submit" value="Vote">

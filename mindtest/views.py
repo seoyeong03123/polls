@@ -12,7 +12,6 @@ def index(request):
 
 def detail(request, mindtest_id):
     mindtest = get_object_or_404(Mindtest, pk=mindtest_id)
-    # question = get_object_or_404(Question, pk=question_id)
     return render(request, 'mindtest/detail.html', {'mindtest': mindtest})
 
 
