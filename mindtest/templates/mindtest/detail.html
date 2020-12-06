@@ -10,7 +10,7 @@
     <form action="{% url 'mindtest:vote' mindtest.id%}" method="post">
         {% csrf_token %}
         {% for question in question_id %}
-
+            <p>{{ question.question_text }}</p>
         {% endfor %}
 
         <input type="submit" value="Vote">
