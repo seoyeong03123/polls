@@ -6,6 +6,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
     <style>
+        body{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
         h1{
             font-family : 'Black Han Sans', sans-serif;
         }
@@ -17,7 +22,7 @@
             font-family: 'Black Han Sans', sans-serif;
         }
         label:hover{
-            border:2px solid gray;
+            border:2px solid white;
         }
     </style>
 </head>
@@ -32,8 +37,10 @@
         <p>{{ question.question_text }}</p>
 
             {% for choice in question.choice_set.all %}
-                <input type="radio" id="choice{{ forloop.counter }}" name="choice" value="{{ choice.id }}">
-            <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+<!--                <input type="radio" id="choice{{ forloop.counter }}" name="choice" value="{{ choice.id }}">-->
+<!--            <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>-->
+            <input type="radio" id="{{ choice.id }}" name="choice" value="{{ choice.id }}">
+            <label for="{{ choice.id }}">{{ choice.choice_text }}</label><br>
             {% endfor %}
 
         {% endfor %}
