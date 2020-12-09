@@ -28,18 +28,17 @@
 </head>
 <body>
     <h1>{{ mindtest.mindtest_text }}</h1>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-
-    <form action="{% url 'mindtest:vote' mindtest.id%}" method="post">
+    <form action="{% url 'mindtest:vote' mindtest.id %}" method="post">
         {% csrf_token %}
 
         {% for question in mindtest.question_set.all %}
         <p>{{ question.question_text }}</p>
+<!--        <img src="{{ question.question_images }}">-->
 
             {% for choice in question.choice_set.all %}
-<!--                <input type="radio" id="choice{{ forloop.counter }}" name="choice" value="{{ choice.id }}">-->
-<!--            <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>-->
-            <input type="radio" id="{{ choice.id }}" name="choice" value="{{ choice.id }}">
+            <input type="radio" id="{{ choice.id }}" name="{{ question.id }}" value="{{ choice.id }}">
             <label for="{{ choice.id }}">{{ choice.choice_text }}</label><br>
             {% endfor %}
 
