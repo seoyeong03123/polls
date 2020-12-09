@@ -35,19 +35,51 @@
 
         {% for question in mindtest.question_set.all %}
         <p>{{ question.question_text }}</p>
-<!--        <img src="{{ question.question_images }}">-->
+
+
+        {% if question.id == 1 %}
+        {% load static %}
+        <img src="{% static 'img/question1.png'%}" width="600" alt="">
+        <br>
+        {% endif %}
+
+        {% if question.id == 2 %}
+        {% load static %}
+        <img src="{% static 'img/question2.png'%}" width="600" alt="">
+        <br>
+        {% endif %}
+
+        {% if question.id == 3 %}
+        {% load static %}
+        <img src="{% static 'img/question3.png'%}" width="600" alt="">
+        <br>
+        {% endif %}
+
+        {% if question.id == 4 %}
+        {% load static %}
+        <img src="{% static 'img/question4.png'%}" width="600" alt="">
+        <br>
+        {% endif %}
+
+        {% if question.id == 5 %}
+        {% load static %}
+        <img src="{% static 'img/question5.png'%}" width="600" alt="">
+        <br>
+        {% endif %}
+
 
             {% for choice in question.choice_set.all %}
             <input type="radio" id="{{ choice.id }}" name="{{ question.id }}" value="{{ choice.id }}">
             <label for="{{ choice.id }}">{{ choice.choice_text }}</label><br>
             {% endfor %}
 
+
+
         {% endfor %}
 
         <input type="submit" value="Vote">
     </form>
-<script>
 
-</script>
+
 </body>
 </html>

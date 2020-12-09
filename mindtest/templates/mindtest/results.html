@@ -6,21 +6,23 @@
     <style>
         body{
             font-family: 'Black Han Sans', sans-serif;
-
         }
     </style>
 </head>
 <body>
     <h1>{{ mindtest.mindtest_text }}</h1>
     <p>결과</p>
-    <ul>
-        {% for question in mindtest.question_set.all %}
-        <p>{{question.question_id}}</p>
-        {% for choice in question.choice_set.all %}
-            <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
-        {% endfor %}
-        {% endfor %}
-    </ul>
+    {% if  choice.id == 1 and choice.votes == 1 %}
+        {% if  choice.id == 3 and choice.votes == 1 %}
+            {% if choice.id == 6 and choice.votes == 1 %}
+                {% if  choice.id == 8 and choice.votes == 1 %}
+                    {% if  choice.id == 10 and choice.votes == 1 %}
+                        파이참 죽어 주거어어ㅓ어어
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        {% endif %}
+    {% endif %}
 
     <a href="{% url 'mindtest:index' %}">GOTOMAIN</a>
 </body>
