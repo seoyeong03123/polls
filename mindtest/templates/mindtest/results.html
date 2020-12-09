@@ -3,10 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        body{
+            font-family: 'Black Han Sans', sans-serif;
+
+        }
+    </style>
 </head>
 <body>
     <h1>{{ mindtest.mindtest_text }}</h1>
     <p>결과</p>
+    <ul>
+        {% for question in mindtest.question_set.all %}
+        <p>{{question.question_id}}</p>
+        {% for choice in question.choice_set.all %}
+            <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+        {% endfor %}
+        {% endfor %}
+    </ul>
 
     <a href="{% url 'mindtest:index' %}">GOTOMAIN</a>
 </body>

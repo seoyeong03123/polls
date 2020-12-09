@@ -6,6 +6,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
     <style>
+        body{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
         h1{
             font-family : 'Black Han Sans', sans-serif;
         }
@@ -17,23 +22,24 @@
             font-family: 'Black Han Sans', sans-serif;
         }
         label:hover{
-            border:2px solid gray;
+            border:2px solid white;
         }
     </style>
 </head>
 <body>
     <h1>{{ mindtest.mindtest_text }}</h1>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-
-    <form action="{% url 'mindtest:vote' mindtest.id%}" method="post">
+    <form action="{% url 'mindtest:vote' mindtest.id %}" method="post">
         {% csrf_token %}
 
         {% for question in mindtest.question_set.all %}
         <p>{{ question.question_text }}</p>
+<!--        <img src="{{ question.question_images }}">-->
 
             {% for choice in question.choice_set.all %}
-                <input type="radio" id="choice{{ forloop.counter }}" name="choice" value="{{ choice.id }}">
-            <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+            <input type="radio" id="{{ choice.id }}" name="{{ question.id }}" value="{{ choice.id }}">
+            <label for="{{ choice.id }}">{{ choice.choice_text }}</label><br>
             {% endfor %}
 
         {% endfor %}
