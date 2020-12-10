@@ -14,14 +14,16 @@
             text-decoration: underline;
             background-image:url(https://newsimg.hankookilbo.com/cms/articlerelease/2020/09/10/9b78c692-c356-428f-b5ab-dd324ad010d1.jpg);
             background-size: cover;
-            font-size: 2em;
+
         }
         p{
             text-align:center;
             font-size:3em;
+
         }
     </style>
 </head>
+
 <body>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,14 +33,15 @@
 </head>
 <body>
     {% if latest_mindtest_list %}
-        <ul>
+        
             {% for mindtest in latest_mindtest_list %}
-            <li><a href="/mindtest/{{ mindtest.id }}">{{ mindtest.mindtest_text }}</a></li>
+            <a href="/mindtest/{{ mindtest.id }}">{{ mindtest.mindtest_text }}</a>
             {% endfor %}
-        </ul>
+        
     {% else %}
         <p>No mindtest are available.</p>
     {% endif %}
+
 </body>
 </html>
 </body>

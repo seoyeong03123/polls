@@ -1,11 +1,13 @@
 from django.db import models
 
+
 class Mindtest(models.Model):
     mindtest_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField(verbose_name='date published')
 
     def __str__(self):
         return self.mindtest_text
+
 
 class Question(models.Model):
     mindtest = models.ForeignKey(Mindtest, on_delete=models.CASCADE)
