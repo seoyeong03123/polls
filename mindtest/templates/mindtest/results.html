@@ -6,12 +6,22 @@
     <style>
         body{
             font-family: 'Black Han Sans', sans-serif;
+
+            text-align: center;
+            font-size: 4em;
+            color:purple;
+            text-decoration: underline;
+            background-image:url(https://newsimg.hankookilbo.com/cms/articlerelease/2020/09/10/9b78c692-c356-428f-b5ab-dd324ad010d1.jpg);
+            background-size: cover;
+            font-size: 2em;
+
         }
     </style>
 </head>
 <body>
     <h1>{{ mindtest.mindtest_text }}</h1>
     <p>결과</p>
+
     {% if  choice.id == 1 and choice.votes == 1 %}
         {% if  choice.id == 3 and choice.votes == 1 %}
             {% if choice.id == 6 and choice.votes == 1 %}
@@ -23,6 +33,7 @@
             {% endif %}
         {% endif %}
     {% endif %}
+
 
     <a href="{% url 'mindtest:index' %}">GOTOMAIN</a>
 </body>

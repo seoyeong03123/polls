@@ -16,7 +16,8 @@
         }
         p{
             font-size: 1.4em;
-            font-family : 'Black Han Sans', sans-serif;}
+            font-family : 'Black Han Sans', sans-serif;
+        }
         label{
             font-size: 1.2em;
             font-family: 'Black Han Sans', sans-serif;
@@ -28,13 +29,18 @@
 </head>
 <body>
     <h1>{{ mindtest.mindtest_text }}</h1>
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+    {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
+
 
     <form action="{% url 'mindtest:vote' mindtest.id %}" method="post">
         {% csrf_token %}
 
         {% for question in mindtest.question_set.all %}
         <p>{{ question.question_text }}</p>
+
 
 
         {% if question.id == 1 %}
@@ -72,14 +78,9 @@
             <input type="radio" id="{{ choice.id }}" name="{{ question.id }}" value="{{ choice.id }}">
             <label for="{{ choice.id }}">{{ choice.choice_text }}</label><br>
             {% endfor %}
-
-
-
         {% endfor %}
-
         <input type="submit" value="Vote">
     </form>
-
 
 </body>
 </html>

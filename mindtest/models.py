@@ -12,6 +12,7 @@ class Mindtest(models.Model):
 class Question(models.Model):
     mindtest = models.ForeignKey(Mindtest, on_delete=models.CASCADE)
     question_text = models.CharField(max_length=200)
+    question_images = models.ImageField(null=True)
 
     def __str__(self):
         return self.question_text

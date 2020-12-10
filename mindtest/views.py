@@ -12,12 +12,27 @@ def index(request):
 
 def detail(request, mindtest_id):
     mindtest = get_object_or_404(Mindtest, pk=mindtest_id)
-    return render(request, 'mindtest/detail.html', {'mindtest': mindtest})
+    question = get_object_or_404(Question, pk=mindtest_id)
+    return render(request, 'mindtest/detail.html', {'mindtest': mindtest, 'question':question})
 
 
 def vote(request, mindtest_id):
     mindtest = get_object_or_404(Mindtest, pk=mindtest_id)
-    return HttpResponseRedirect(reverse('mindtest:results', args=(mindtest.id, )))
+    question = get_object_or_404(Question, pk=mindtest_id)
+
+    try:
+        selected_choice = question.choice_set.get(pk=request.POST['question.id'])
+
+    except (KeyError, Choice.DoesNotExist):
+        return render(request, 'mindtest/detail.html', {
+            'mindtest': mindtest,
+            'error_message': "You didn't select a choice."
+        })
+    selected_choice.votes += 1
+    selected_choice.save()
+    return HttpResponseRedirect(reverse('mindtest:results', args=(mindtest.id, results.id)))
+
+
 
 
 def results(request, mindtest_id):
