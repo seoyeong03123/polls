@@ -33,8 +33,6 @@ def vote(request, mindtest_id):
     return HttpResponseRedirect(reverse('mindtest:results', args=(mindtest.id, results.id)))
 
 
-
-
 def results(request, mindtest_id):
     mindtest = get_object_or_404(Mindtest, pk=mindtest_id)
     return render(request, 'mindtest/results.html', {'mindtest': mindtest})
